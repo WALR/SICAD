@@ -52,14 +52,16 @@ public class db extends Conexion{
         ResultSet resultado = null;
         control.usuario dat = new control.usuario();
         boolean res = false;
+        int id;
         String usu, cont, nombre, correo, sql = "select * from usuario";
         try {
             resultado = consultar(sql);
             if(resultado != null){
                while(resultado.next()){
-                   usu = resultado.getString(1);
-                   cont = resultado.getString(2);
-                   nombre = resultado.getString(3);
+                   id = resultado.getInt(1);
+                   nombre = resultado.getString(2);
+                   usu = resultado.getString(3);
+                   cont = resultado.getString(4);
                    correo = resultado.getString(4);
                   if(usu.equals(us) && cont.equals(con)){
                   dat.setUsuario(usu);
@@ -94,7 +96,7 @@ public class db extends Conexion{
     }
     public boolean Newusuario(String nombre, String us, String con, String correo){
         boolean valor = true;
-        String sql = "INSERT INTO USUARIO (USUARIO, CONTRASENIA,NOMBRE, CORREO) VALUES('"+
+        String sql = "INSERT INTO USUARIO (USUARIO, CONTRASENA,NOMBRE, CORREO) VALUES('"+
                 us+"','"+con+"','"+nombre+"','"+correo+"')";
         conectar();
         try {
@@ -113,20 +115,32 @@ public class db extends Conexion{
         }
         return valor;
     }
-
-/*    public void guardarUsuario(Persona persona){
-        insertar("insert into Persona values("+persona.getId()
-                    +",'"+persona.getPrimer_nombre()
-                    +"','"+persona.getSegundo_nombre()
-                    +"','"+persona.getPrimer_apellido()
-                    +"','"+persona.getSegundo_apellido()+"')");
-    } 
-  */
-    public void totalPersonas(DefaultTableModel tableModel){
+    public boolean Modificar(int id, String nombre, String us, String con, String correo){
+        boolean valor = true;
+        String sql = "UPDATE USUARIO SET nombre='"+nombre+"', usuario='"+us+"', contrasena='"+con+"', CORREO='"+correo+"'"
+                + "WHERE id="+id;
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException e) {
+                valor = false;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }      
+        finally{  
+            try{    
+                 consulta.close();  
+                 conexion.close();  
+             }catch (Exception e){                 
+                 e.printStackTrace();  
+             }  
+        }
+        return valor;
+    }
+    public void totalUsuario(DefaultTableModel tableModel){
         ResultSet resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(0);
-        String sql = "select * from Persona";
+        String sql = "select * from USUARIO";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -140,6 +154,7 @@ public class db extends Conexion{
                         objetos[i-1] = resultado.getObject(i);
                     }
                     tableModel.addRow(objetos);
+                    
                 }
             }
         }catch(SQLException e){
