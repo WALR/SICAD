@@ -1,12 +1,3 @@
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>SICAD</title>
-</head>
-<body>
-	<h1>Sistema de Control Administrativo</h1>
-
-	
-</body>
-</html>
-
+##SICAD
+#Sistema de Control Administrativo
+Lo que se busca con esta aplicacion es reducir los tiempos de los proceso.
