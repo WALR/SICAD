@@ -94,10 +94,31 @@ public class db extends Conexion{
        
         return res;
     }
-    public boolean Newusuario(String nombre, String us, String con, String correo){
+    public boolean Newusuario(int id, String nombre, String us, String con, String correo){
         boolean valor = true;
-        String sql = "INSERT INTO USUARIO (USUARIO, CONTRASENA,NOMBRE, CORREO) VALUES('"+
-                us+"','"+con+"','"+nombre+"','"+correo+"')";
+        String sql = "INSERT INTO USUARIO (ID, USUARIO, CONTRASENA,NOMBRE, CORREO) VALUES("+
+                id+",'"+us+"','"+con+"','"+nombre+"','"+correo+"')";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException e) {
+                valor = false;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }      
+        finally{  
+            try{    
+                 consulta.close();  
+                 conexion.close();  
+             }catch (Exception e){                 
+                 e.printStackTrace();  
+             }  
+        }
+        return valor;
+    }
+    public boolean Eliminar(int id){
+        boolean valor = true;
+        String sql = "DELETE FROM USUARIO WHERE id="+id;
+  
         conectar();
         try {
             consulta.executeUpdate(sql);
