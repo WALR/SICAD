@@ -100,6 +100,12 @@ public class session extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(ses.usuario(txt_usuario.getText(), txt_contrasena.getText())){
             principal.show();
+            principal.id = ses.getId();
+            principal.nombre = ses.getNombre();
+            principal.usu = ses.getUsuario();
+            principal.contrasena = ses.getContrasena();
+            principal.correo = ses.getCorreo();
+            principal.permiso = ses.getPermiso();
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña incorrectos. Intenta de Nuevo.");

@@ -1,15 +1,17 @@
 package control;
 import java.awt.Dimension;
-
+import javax.swing.JOptionPane;
 
 public class principal extends javax.swing.JFrame {
-    usuario usuario = new usuario();
-
+    int id, permiso;
+    String nombre, usu, contrasena, correo;
+    
     public principal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         desk.setBorder(new img.imgfondo()); 
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +36,7 @@ public class principal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,6 +48,11 @@ public class principal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Contraseña");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
         jMenu1.add(jSeparator1);
 
@@ -86,6 +94,15 @@ public class principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Ayuda");
+
+        jMenuItem6.setText("Acerca de...");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem6);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -110,12 +127,16 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        settings.master set = new settings.master();
-        Dimension desktopSize = desk.getSize();
-        Dimension jInternalFrameSize = set.getSize();
-        set.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-        (desktopSize.height- jInternalFrameSize.height)/2);
-        desk.add(set).show();
+        if(permiso<3){
+            JOptionPane.showMessageDialog(null, "Usted no tiene permiso para esta opcion.");
+        }else{
+            settings.master set = new settings.master();
+            Dimension desktopSize = desk.getSize();
+            Dimension jInternalFrameSize = set.getSize();
+            set.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+            desk.add(set).show();
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -127,9 +148,13 @@ public class principal extends javax.swing.JFrame {
         desk.add(dpd6).show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void redim(settings.master set){
-        
-    }
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        JOptionPane.showMessageDialog(null, "Usuario:"+id+" "+nombre+" "+usu+" "+contrasena+" "+correo);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -178,6 +203,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables

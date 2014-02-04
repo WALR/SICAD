@@ -11,6 +11,56 @@ import javax.swing.table.DefaultTableModel;
  * @author walr
  */
 public class db extends Conexion{
+    int id, permiso;
+    String usu, cont, nombre, correo; 
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+      public int getPermiso() {
+        return permiso;
+    }
+
+    public void setPermiso(int permiso) {
+        this.permiso = permiso;
+    }
+
+    public String getUsuario() {
+        return usu;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usu = usuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+        //JOptionPane.showMessageDialog(null, "Usuario: "+this.nombre);
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasena() {
+        return cont;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.cont = contrasena;
+    }
     
     public boolean insertar(String sql){
         boolean valor = true;
@@ -50,24 +100,26 @@ public class db extends Conexion{
     
     public boolean usuario(String us, String con){
         ResultSet resultado = null;
-        control.usuario dat = new control.usuario();
         boolean res = false;
-        int id;
-        String usu, cont, nombre, correo, sql = "select * from usuario";
+        String sql = "select * from usuario";
         try {
             resultado = consultar(sql);
             if(resultado != null){
                while(resultado.next()){
+                   usu = resultado.getString(3);
+                   cont = resultado.getString(4);
+                  if(usu.equals(us) && cont.equals(con)){
                    id = resultado.getInt(1);
                    nombre = resultado.getString(2);
                    usu = resultado.getString(3);
                    cont = resultado.getString(4);
-                   correo = resultado.getString(4);
-                  if(usu.equals(us) && cont.equals(con)){
-                  dat.setUsuario(usu);
-                  dat.setContrasena(cont);
-                  dat.setNombre(nombre);
-                  dat.setCorreo(correo);
+                   correo = resultado.getString(5);
+                   permiso = resultado.getInt(6);
+                   setId(id);
+                   setNombre(nombre);
+                   setUsuario(usu);
+                   setContrasena(cont);
+                   setCorreo(correo);
                   res = true;
                   }
                     
@@ -94,10 +146,11 @@ public class db extends Conexion{
        
         return res;
     }
-    public boolean Newusuario(int id, String nombre, String us, String con, String correo){
+  
+    public boolean Newusuario(int id, String nombre, String us, String con, String correo, int permiso){
         boolean valor = true;
-        String sql = "INSERT INTO USUARIO (ID, USUARIO, CONTRASENA,NOMBRE, CORREO) VALUES("+
-                id+",'"+us+"','"+con+"','"+nombre+"','"+correo+"')";
+        String sql = "INSERT INTO USUARIO (ID, USUARIO, CONTRASENA,NOMBRE, CORREO, PERMISO) VALUES("+
+                id+",'"+us+"','"+con+"','"+nombre+"','"+correo+"',"+permiso+")";
         conectar();
         try {
             consulta.executeUpdate(sql);
@@ -136,10 +189,10 @@ public class db extends Conexion{
         }
         return valor;
     }
-    public boolean Modificar(int id, String nombre, String us, String con, String correo){
+    public boolean Modificar(int id, String nombre, String us, String con, String correo, int permiso){
         boolean valor = true;
-        String sql = "UPDATE USUARIO SET nombre='"+nombre+"', usuario='"+us+"', contrasena='"+con+"', CORREO='"+correo+"'"
-                + "WHERE id="+id;
+        String sql = "UPDATE USUARIO SET nombre='"+nombre+"', usuario='"+us+"', contrasena='"+con+"', CORREO='"+correo+"', permiso="+permiso
+                + " WHERE id="+id;
         conectar();
         try {
             consulta.executeUpdate(sql);

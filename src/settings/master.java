@@ -51,6 +51,8 @@ public class master extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txt_id = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        permiso = new javax.swing.JComboBox();
         todos = new javax.swing.JPanel();
         panelTabla = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -69,6 +71,8 @@ public class master extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
         mod_id = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        mod_permiso = new javax.swing.JComboBox();
 
         setTitle("Configuracion");
 
@@ -138,6 +142,10 @@ public class master extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel11.setText("Permisos:");
+
+        permiso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+
         javax.swing.GroupLayout usuarioLayout = new javax.swing.GroupLayout(usuario);
         usuario.setLayout(usuarioLayout);
         usuarioLayout.setHorizontalGroup(
@@ -158,14 +166,21 @@ public class master extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(1, 1, 1)
-                            .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(usuarioLayout.createSequentialGroup()
+                                .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90)
+                                .addComponent(permiso, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioLayout.createSequentialGroup()
+                            .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGroup(usuarioLayout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jLabel11)))
+                            .addGap(1, 1, 1)
+                            .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
@@ -189,7 +204,9 @@ public class master extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(permiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,20 +297,14 @@ public class master extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Id:");
 
+        jLabel12.setText("Permiso:");
+
+        mod_permiso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", " " }));
+
         javax.swing.GroupLayout modificarLayout = new javax.swing.GroupLayout(modificar);
         modificar.setLayout(modificarLayout);
         modificarLayout.setHorizontalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modificarLayout.createSequentialGroup()
-                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(modificarLayout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(298, 298, 298))
-                    .addGroup(modificarLayout.createSequentialGroup()
-                        .addGap(399, 399, 399)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -313,13 +324,26 @@ public class master extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel1))
                                 .addGap(200, 200, 200)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel7))
                         .addGap(4, 4, 4)
                         .addComponent(mod_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mod_id, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(mod_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50))
+            .addGroup(modificarLayout.createSequentialGroup()
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mod_permiso, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(modificarLayout.createSequentialGroup()
+                            .addGap(257, 257, 257)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(modificarLayout.createSequentialGroup()
+                            .addGap(399, 399, 399)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         modificarLayout.setVerticalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +367,9 @@ public class master extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mod_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel12)
+                    .addComponent(mod_permiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,6 +425,7 @@ public class master extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        txt_id.setText("");
         txt_nombre.setText("");
         txt_usuario.setText("");
         txt_contrasena.setText("");
@@ -406,7 +433,8 @@ public class master extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if(db.Newusuario(Integer.parseInt(txt_id.getText()),txt_nombre.getText(), txt_usuario.getText(), txt_contrasena.getText(), txt_correo.getText())){
+        String perm = (String) permiso.getSelectedItem();
+        if(db.Newusuario(Integer.parseInt(txt_id.getText()),txt_nombre.getText(), txt_usuario.getText(), txt_contrasena.getText(), txt_correo.getText(), Integer.parseInt(perm))){ 
             JOptionPane.showMessageDialog(null, "Usuario Nuevo creado Correctamente.");
             txt_id.setText("");
             txt_nombre.setText("");
@@ -449,7 +477,8 @@ public class master extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(db.Modificar(Integer.parseInt(mod_id.getText()), mod_nombre.getText(), mod_usuario.getText(), mod_contra.getText(), mod_correo.getText())){
+        String mod_perm = (String) mod_permiso.getSelectedItem();
+        if(db.Modificar(Integer.parseInt(mod_id.getText()), mod_nombre.getText(), mod_usuario.getText(), mod_contra.getText(), mod_correo.getText(), Integer.parseInt(mod_perm))){
             JOptionPane.showMessageDialog(null, "Datos Modificados exitosamente.");
             mod_id.setText("");
             mod_nombre.setText("");
@@ -526,6 +555,8 @@ public class master extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -538,10 +569,12 @@ public class master extends javax.swing.JInternalFrame {
     private javax.swing.JTextField mod_correo;
     private javax.swing.JTextField mod_id;
     private javax.swing.JTextField mod_nombre;
+    private javax.swing.JComboBox mod_permiso;
     private javax.swing.JTextField mod_usuario;
     private javax.swing.JPanel modificar;
     private javax.swing.JPanel panel;
     private javax.swing.JScrollPane panelTabla;
+    private javax.swing.JComboBox permiso;
     private javax.swing.JTable tabla;
     private javax.swing.JPanel todos;
     private javax.swing.JTextField txt_contrasena;

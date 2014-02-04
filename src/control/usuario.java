@@ -1,9 +1,21 @@
 package control;
 
+import javax.swing.JOptionPane;
+
 public class usuario {
+   private int id;
    private String usuario, nombre, correo, contrasena;
    
     public usuario(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUsuario() {
         return usuario;
     }
@@ -18,6 +30,7 @@ public class usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        //JOptionPane.showMessageDialog(null, "Usuario: "+this.nombre);
     }
 
     public String getCorreo() {
@@ -35,5 +48,5 @@ public class usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-   
+
 }
