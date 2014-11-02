@@ -115,7 +115,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desk" alignment="1" pref="698" max="32767" attributes="0"/>
+          <Component id="desk" alignment="0" pref="739" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
